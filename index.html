@@ -1,19 +1,725 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>오픈 중비중입니다</title>
-	<style type="text/css">
-		body {
-			background-color: #f2f2f2;
-			font-family: Arial;
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>소프트웨어 마이스터고 준비반</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3519e494-4d15-4375-be1c-1679f0c53ce9" class="page sans"><header><img class="page-cover-image" src="%E1%84%89%E1%85%A9%E1%84%91%E1%85%B3%E1%84%90%E1%85%B3%E1%84%8B%E1%85%B0%E1%84%8B%E1%85%A5%20%E1%84%86%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%80%E1%85%A9%20%E1%84%8C%E1%85%AE%E1%86%AB%E1%84%87%E1%85%B5%E1%84%87%E1%85%A1%E1%86%AB%203519e4944d154375be1c1679f0c53ce9/JSS_%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB%25E1%2584%2583%25E1%2585%25A1%25E1%2586%25AB%25E1%2584%258C%25E1%2585%25B5-ai_(6).png" style="object-position:center 29.630000000000003%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🚀</span></div><h1 class="page-title">소프트웨어 마이스터고 준비반</h1><p class="page-description"></p></header><div class="page-body"><p id="2a4aeeda-1cb9-4945-9ed4-382ff16bf5a4" class="">
+</p><h1 id="6d336977-8e1d-481f-93c8-fc8f7a66d801" class="">와주셔서 감사해요☺️
+이제는 졸업생이 도와드릴게요💪</h1><hr id="650900dc-e59c-4a0b-9211-78ffcbabed70"/><p id="690517f3-09b6-4905-a356-43b02ae733cf" class="">여기까지 오기까지 정말 어렵고 힘든 결정 하셨습니다! 👏
+남들이 쉽사리 선택하지 않는 길, 그 길을 가기 위해서는 남들보다 더 큰 용기가 있어야 하지요.</p><p id="82516be2-a947-48fe-8231-672c3c34cda7" class="">
+</p><p id="8781fc2d-1f4b-4c1b-b243-e0ff219b5e00" class="">참 많은 학부모님과 아이들을 만나보면서 용기의 동기를 듣고자 하면</p><blockquote id="a27f276d-06a5-48bc-8d3e-adc7f3c40cf0" class="">“나의 삶을 주도적으로 개척하고 싶어서요”</blockquote><blockquote id="02506a1f-09b0-4650-8163-b6de54296332" class="">“멋진 선택을 한 내 아이의 용기와 결정을 응원하고 지지해주기 위해서 결정했어요”</blockquote><p id="2293c0c0-ea5f-4b0d-a0ba-87537473aab6" class="">라고 말씀하시곤 하셨어요.
+
+이 글을 읽고계신 여러분들도 이렇게 멋진 생각을 하셔서 용기를 내어 선택을 하셨을거 알고있어요!</p><p id="41d4f698-0708-4b62-bd78-5e72c97eeb30" class="">
+</p><p id="9297448c-ca27-40b0-829b-3e07c1abacbf" class="">소중하기에 숙고하고 용기내어 결정한 내 길,
+<mark class="highlight-blue"><strong>“용기”를 내어 선택한 그 길</strong></mark>을 <mark class="highlight-blue"><strong>졸업생이 도와 같이 걷겠습니다</strong></mark><mark class="highlight-blue">.
+
+</mark>성공의 과실은 언제나 용기낸 자에게 허락되듯, 용기를낸 여러분들은 결국 성공의 과실을 맛보실거라고 자신있게 생각해요</p><p id="483af52b-7e20-4b37-85ae-855b5efb91eb" class="">
+</p><p id="32f17bf5-772c-4e27-83da-c771ef91e4d3" class=""><strong>대구소프트웨어마이스터고등학교 3기 졸업생 전인성 올림.</strong></p><hr id="ac2f8bec-bbeb-40aa-9524-9317a0d2c048"/><p id="dd1e124b-0110-4abf-b1f3-3126ef515bb0" class="">
+</p><p id="8105ecb8-1398-4756-b388-b4da55a60f71" class="">
+</p><h1 id="ccf5ada5-7840-4e11-84b2-a16735a80b95" class="">🖐 강의 일정이 궁금해요!</h1><hr id="3b34fe63-c793-44f7-85c5-60ea3a9495e0"/><table id="05eca6b5-2acd-46ff-aad0-453a37624d77" class="simple-table"><tbody><tr id="a76fa450-2386-4105-9d0b-596665175534"><th id="fY?n" class="simple-table-header-color simple-table-header">📅 강의 일정 </th><td id="AT~u" class="" style="width:254px">8월 1일(화) ~ 9월 27일(화). 2개월</td></tr><tr id="1317b91c-c872-4566-808e-3a9e8815dc0c"><th id="fY?n" class="simple-table-header-color simple-table-header">🕐 강의 시간</th><td id="AT~u" class="" style="width:254px">주 2회, 차시당 2시간. 총 18차시, 36시간</td></tr></tbody></table><h1 id="44dc9a56-94ee-43ed-a757-2cffe44a5e27" class="">💰 교습비가 제일 중요하죠!</h1><hr id="86c11f47-8497-4d39-849a-636b97d30726"/><h3 id="664138ff-fd3c-4477-8c0b-32070f31e5f8" class="">교습과목 및 교습비등</h3><table id="98831703-916a-44ab-8928-eef1ef4a898b" class="simple-table"><thead class="simple-table-header"><tr id="ecc2840e-f46f-4fdb-82ed-618dba1fff0a"><th id="T^vr" class="simple-table-header-color simple-table-header" style="width:137px">교습과목</th><th id="xnt&lt;" class="simple-table-header-color simple-table-header" style="width:174.15625px">중학교 교습비</th></tr></thead><tbody><tr id="a60d4f05-6a29-4075-9b33-d9897bce87c9"><td id="T^vr" class="" style="width:137px">정보처리</td><td id="xnt&lt;" class="" style="width:174.15625px">월 252,000원
+(<strong>1시간당 14,000원</strong>)</td></tr></tbody></table><table id="848f3146-527b-4a9c-9ae3-b2625a03668b" class="simple-table"><tbody><tr id="6a7c756d-295c-4caf-a8dd-1a1dfcc98c93"><td id="\uxK" class="">교습장소</td><td id="GqpV" class="" style="width:289px">대구광역시 북구 동천로24길 12, 204동 204호</td></tr><tr id="24d6661b-4299-4b5a-b83b-38f7ecfa2d3d"><td id="\uxK" class="">교습비등에 대한 사항</td><td id="GqpV" class="" style="width:289px">교습비등은 1인당 금액을 말합니다.</td></tr></tbody></table><p id="0f1369a6-d2bd-42d2-b056-761e35d2f3d3" class="">💡 2개월 완강하면 <strong>총 50만 4천원 </strong>들어요.</p><p id="94c052ee-ad15-4ce4-885c-af5200c5e1ca" class="">
+</p><p id="9372605f-748a-4d56-a780-fa3fba464bd6" class="">헉? 🤭 정말 이 비용이 합리적인 건가요?</p><p id="797614ca-b56e-45c4-b58f-908a8ebe343a" class="">고시된 정보를 기준으로,
+유명한 ‘M’학원에서 운영하는 IT입시반에 경우 
+총 32시간, 시간당 2만5천원으로 
+<mark class="highlight-red"><strong>완강시 교습비는 80만원</strong></mark>이 들어요</p><p id="f92984d1-73f1-45c9-96b4-8e24b813a7a2" class="">
+</p><p id="af68a302-0a2a-423f-b2b4-dcb83ca27fa2" class="">전인성 소프트웨어 스터디는
+<strong>완강 기준 </strong><mark class="highlight-blue"><strong>약 30만원 저렴</strong></mark><strong>하며
+수업시간도 </strong><mark class="highlight-blue"><strong>2시간 더 많아요!</strong></mark></p><p id="a8f6ed7f-27d3-4741-a99a-cc46c09f9bda" class="">
+</p><p id="9b15b260-0ade-48e3-b1d7-395b6ff1ac43" class="">저 또한 그 누구보다 입학이 절실했었기에,
+터무니 없는 견적서를 받아들고 좌절해봤기에
+최소한의 가격으로 최고의 결과를 만들겠습니다.</p><p id="bf9c47ca-fca3-4f9a-ae98-02b2671ae464" class="">
+</p><h1 id="2ee9c1ab-ac5e-419d-bb7a-d008415f87fa" class="">🔍 무얼 배울 수 있나요?</h1><hr id="bb81800d-1850-40a2-9c82-9021f616b07d"/><ol type="1" id="21490f9d-5eac-4f2e-a653-606171647c14" class="numbered-list" start="1"><li>정보교과 기반 SW역량 강화.</li></ol><ol type="1" id="daed0c22-4619-4342-a9b0-39251f3609e5" class="numbered-list" start="2"><li>알고리즘 및 블록코딩(부산소프트웨어고교 진학 희망시 일반 코딩) 준비.</li></ol><ol type="1" id="e0b49890-1dc0-4f44-b2f2-88cb1c8ec3bc" class="numbered-list" start="3"><li>자소서 및 면접 준비.</li></ol><p id="a2eb0387-20a0-4aab-b1dd-de58a696651b" class="">
+</p><p id="e470ca28-3c57-461f-9584-b5c06350b044" class="">수업은 위 세 가지 과정을 중점으로 진행해요.</p><p id="c169eef8-24ed-4e8b-87f4-311eaf4c11f0" class="">상담을 통해서 수강생에게 유리한 학교를 추천해 드리고, 각 학교의 입시요강에 맞춰 수업을 진행해요.</p><p id="2ed36f6a-eca7-486d-9160-84efe5fa2460" class="">
+</p><p id="539301c9-5459-414e-a18f-ebe5d2dae4bf" class="">
+</p><p id="5e2575f7-96d6-4c7f-9be5-9b868f524eed" class="">
+</p><p id="37f1b4df-01de-46c5-b492-dd0262d4fb1a" class="">
+	<head><style>@keyframes fadeIn{from{opacity:0;transform:translate(0,30px)}to{opacity:1;transform:translate(0,0)}}.cta{position:fixed;bottom:20px;left:0;right:0;margin:0 auto;display:flex;align-self:center;align-items:center;justify-content:center;width:88%;max-width:708px;height:48px;color:#fbfbfb;background-color:#0940a4;text-decoration:none;border-radius:8px;font-weight:700;font-size:16px;transition:.3s;-webkit-box-shadow:0 0 4px 2px rgba(87,78,71,.4);-moz-box-shadow:0 0 4px 2px rgba(87,78,71,.4);box-shadow:0 0 4px 2px rgba(87,78,71,.4);animation:.8s ease fadeIn;font-family:inter,sans-serif}</style></head><body><script>
+		const getURLParameters=()=>{
+			const params={} 
+			location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(str,key,value){
+				params[key]=value
+			});
+	
+			return params
 		}
-		h1 {
-			color: red;
-			text-align: center;
+		const source = 'source';
+		const defaultValue = '';
+	
+		const clickEventHandler = () => {
+				const queryStrings =getURLParameters(); 
+				const from = queryStrings[source] || defaultValue;
+				const url = "https://forms.gle/ef4bsJ6GsNTYWXbCA" + from;
+				window.open(url);
 		}
-	</style>
-</head>
-<body>
-	<h1>오픈 중비중입니다</h1>
-</body>
-</html>
+	</script><a class="cta" style="z-index:9999" onclick="clickEventHandler();">상담신청하고 내 꿈과 더 가까워지기</a></body>
+</p></div></article></body></html>
